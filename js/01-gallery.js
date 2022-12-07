@@ -2,6 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const gallery = document.querySelector(`.gallery`);
+let bigPhoto;
 gallery.addEventListener("click", showBigSizePhoto);
 makeMarkupForGallary();
 
@@ -33,8 +34,16 @@ function showBigSizePhoto(evt) {
 
   let currentBigPhoto = evt.target.dataset.source;
 
-  const bigPhoto = basicLightbox.create(`
+  bigPhoto = basicLightbox.create(`
     <img src="${currentBigPhoto}" width="800" height="600">
 `);
+  window.addEventListener("keydown", closePhotoOnEsc);
   bigPhoto.show();
+}
+
+function closePhotoOnEsc(evt) {
+  if (evt.code === "Escape") {
+    bigPhoto.close();
+    window.removeEventListener("keydown", closePhotoOnEsc);
+  }
 }
