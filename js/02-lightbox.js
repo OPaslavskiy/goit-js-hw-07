@@ -18,7 +18,7 @@ function makeMarkupForGallary() {
   gallery.insertAdjacentHTML("beforeend", markup);
 }
 
-// const slider = new SimpleLightbox(".gallery .gallery__item", {
-//   captionsData: "alt",
-//   captionDelay: 250,
-// });
+new SimpleLightbox(".gallery .gallery__item", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
